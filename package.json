@@ -24,5 +24,9 @@
     "readable-stream": "^3.6.0",
     "sass": "^1.37.5",
     "tailwindcss": "^2.2.7"
+  },
+  "dependencies": {
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "lodash": "^4.17.21"
   }
 }

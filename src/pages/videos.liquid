@@ -1,0 +1,12 @@
+---
+layout: main
+pagination:
+    data: youtube
+    size: 1
+    alias: video
+permalink: "video/{{ video.videoId }}.html"
+---
+<article>
+    <h1>{{ video.title }}</h1>
+    <p>{{ video.description }}</p>
+</article>
