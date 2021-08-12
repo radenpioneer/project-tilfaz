@@ -1,0 +1,1 @@
+exports.styles = require('./styles').default
