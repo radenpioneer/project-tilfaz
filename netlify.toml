@@ -1,0 +1,7 @@
+[build]
+    command = "yarn build"
+    publish = "dist/"
+    
+[dev]
+    command = "npm start"
+    autoLaunch = false
