@@ -12,7 +12,7 @@ module.exports = function(eleventyConfig) {
     })
 
     eleventyConfig.on('beforeBuild', function() {
-        execSync('pnpx gulp styles', { stdio: 'inherit' })
+        execSync('npx gulp styles', { stdio: 'inherit' })
     })
 
     return {
