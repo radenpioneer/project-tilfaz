@@ -7,7 +7,7 @@ module.exports = function(eleventyConfig) {
         name: 'serverless',
         functionsDir: './netlify/functions/',
         copy: [
-            { from: 'cache', to: 'cache' }
+            { from: '.cache', to: 'cache' }
         ]
     })
 

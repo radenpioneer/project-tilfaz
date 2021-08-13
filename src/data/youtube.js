@@ -15,12 +15,18 @@ const SOURCES = [
     'UCKZEfS7ucKz3hBxmb48DivA'  // Gamal Albinsaid
 ]
 
+const cacheOptions = {}
+
+if(process.env.ELEVENTY_SERVERLESS) {
+    cacheOptions.directory = 'cache'
+}
+
 async function getVideoPlaylist(id) {
     const url = `${YOUTUBE_API_BASE_URL}/channels?part=contentDetails&id=${id}&key=${KEY}`
     const result = await Cache(url,{
         duration: '90d',
         type: 'json',
-        directory: 'cache'
+        ...cacheOptions
     })
     return _.get(result, ['items', '0', 'contentDetails', 'relatedPlaylists', 'uploads'])
 }
@@ -32,7 +38,7 @@ async function getVideos(id, token='') {
     const result = await Cache(url, {
         duration: '1d',
         type: 'json',
-        directory: 'cache'
+        ...cacheOptions
     })
 
     let allVideos = _.map(_.get(result, 'items'), function(data){
