@@ -1,6 +1,15 @@
 const {execSync} = require('child_process')
+const {EleventyServerlessBundlerPlugin} = require('@11ty/eleventy')
 
 module.exports = function(eleventyConfig) {
+
+    eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+        name: 'serverless',
+        functionsDir: './netlify/functions/',
+        copy: [
+            { from: 'cache', to: 'cache' }
+        ]
+    })
 
     eleventyConfig.on('beforeBuild', function() {
         execSync('pnpx gulp styles', { stdio: 'inherit' })

@@ -15,6 +15,7 @@ api-docs/
 # Ignore eleventy output when doing local tests
 _site/
 .cache
+cache
 dist
 
 # Local Netlify folder
@@ -28,3 +29,7 @@ src/components/styles/
 
 # env
 .env
+
+# 11ty serverless
+netlify/functions/serverless/**
+!netlify/functions/serverless/index.js

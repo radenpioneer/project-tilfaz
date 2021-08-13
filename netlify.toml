@@ -1,7 +1,17 @@
 [build]
-    command = "yarn build"
-    publish = "dist/"
-    
+command = "yarn build"
+publish = "dist/"
+
 [dev]
-    command = "npm start"
-    autoLaunch = false
+command = "npm start"
+autoLaunch = false
+
+[functions]
+directory = "netlify/functions/"
+
+[[redirects]]
+from = "video/:id/"
+to = "/.netlify/functions/serverless"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "serverless"

@@ -19,7 +19,8 @@ async function getVideoPlaylist(id) {
     const url = `${YOUTUBE_API_BASE_URL}/channels?part=contentDetails&id=${id}&key=${KEY}`
     const result = await Cache(url,{
         duration: '90d',
-        type: 'json'
+        type: 'json',
+        directory: 'cache'
     })
     return _.get(result, ['items', '0', 'contentDetails', 'relatedPlaylists', 'uploads'])
 }
@@ -30,15 +31,16 @@ async function getVideos(id, token='') {
                 + (token ? `&pageToken=${token}` : '')
     const result = await Cache(url, {
         duration: '1d',
-        type: 'json'
+        type: 'json',
+        directory: 'cache'
     })
 
     let allVideos = _.map(_.get(result, 'items'), function(data){
         return {
+            id: _.get(data, ['snippet', 'resourceId', 'videoId']),
             title: _.get(data, ['snippet', 'title']),
             description: _.get(data, ['snippet', 'description']),
             date: _.get(data, ['snippet', 'publishedAt']),
-            videoId: _.get(data, ['snippet', 'resourceId', 'videoId']),
             channel: _.get(data, ['snippet', 'channelTitle']),
             channelId: _.get(data, ['snippet', 'channelId'])
         }
