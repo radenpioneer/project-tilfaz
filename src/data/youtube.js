@@ -15,7 +15,6 @@ const SOURCES = [
     'UCKZEfS7ucKz3hBxmb48DivA'  // Gamal Albinsaid
 ]
 
-Cache.concurrency = 1
 const cacheOptions = {}
 
 if(process.env.ELEVENTY_SERVERLESS) {
