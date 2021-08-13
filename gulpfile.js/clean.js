@@ -5,7 +5,8 @@ exports.default = async function() {
         'dist',
         'src/components/styles',
         'netlify/functions/serverless/*',
-        '!netlify/functions/serverless/index.js'
+        '!netlify/functions/serverless/index.js',
+        '.netlify/functions'
     ]
     
     await del(files)
